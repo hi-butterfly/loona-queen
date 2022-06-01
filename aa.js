@@ -34,16 +34,12 @@ function isChange(a) {
 function getResult() {
     $("#tableRes1>tbody").empty();
     var sum_coin = 0;
-    $("input[type=number]").each(function (idx) {
+    $("input[type=hidden]").each(function (idx) {
         if ($(this).val()) {
             var tmpa = $(this).closest('tr').clone();
-            var price = parseInt(tmpa.find("td:eq(2)").text());
+            var price = parseInt(tmpa.find("td:eq(1)").text());
             var coin = parseInt($(this).val()) * price;
-            sum_coin += coin;
-            console.log("@@");
-            console.log(sum_coin);
             tmpa.find("td:eq(1)").html($(this).val());
-            tmpa.find("td:eq(3)").html(coin);
             $("#tableRes1>tbody").append(tmpa);
         }
     });
@@ -143,11 +139,6 @@ $(document).ready(function () {
         },
         position: 'right center'
     });
-    $("#punch").change(function () {
-        var i = parseInt($('#punch').val());
-        var coin = Math.floor(i / 2);
-        $('#display_union').text(`최대 ${numberWithCommas(coin)} 코인`);
-    });
 });
 
 
@@ -156,33 +147,33 @@ $.getJSON('csv1.json', function (items) {
     $.each(items, function (i, item) {
         switch (item.cat) {
             case "가전/전자":
-                $("#coin2>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:60px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
+                $("#coin2>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "게임":
-                $("#coin3>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:60px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
+                $("#coin3>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "기프티콘":
-                $("#coin4>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:60px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
+                $("#coin4>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "아이돌/굿즈":
             case "CD/DVD":
-                $("#coin5>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:60px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
+                $("#coin5>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "현금/상품권":
-                $("#coin6>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:60px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
+                $("#coin6>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "화장품":
-                $("#coin7>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:60px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
+                $("#coin7>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "패션잡화":
             case "의류":
-                $("#coin8>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:60px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
+                $("#coin8>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "식품":
-                $("#coin9>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:60px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
+                $("#coin9>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             default:
-                $("#coin10>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:60px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
+                $("#coin10>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 console.log('기타');
         }
     });
