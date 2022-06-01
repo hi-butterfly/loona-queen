@@ -38,8 +38,10 @@ function getResult() {
         if ($(this).val()) {
             var tmpa = $(this).closest('tr').clone();
             var price = parseInt(tmpa.find("td:eq(2)").text());
-            var coin = parseInt($(this).val()) * price
+            var coin = parseInt($(this).val()) * price;
             sum_coin += coin;
+            console.log("@@");
+            console.log(sum_coin);
             tmpa.find("td:eq(1)").html($(this).val());
             tmpa.find("td:eq(3)").html(coin);
             $("#tableRes1>tbody").append(tmpa);
@@ -108,7 +110,7 @@ function aaaa() {
         showProgress: 'bottom',
         classProgress: 'green'
     });
-    var API_URL = "https://241sda46h0.execute-api.ap-northeast-2.amazonaws.com/heejin";
+    var API_URL = "https://8kl7idqvja.execute-api.ap-northeast-2.amazonaws.com/heejin";
     var jsonObj = tableToJson(document.getElementById("tableRes1"));
     var sum_coin = jsonObj[Object.keys(jsonObj)[jsonObj.length-1]].cnt.replace(',', '')
     if (sum_coin <= 21433) {
@@ -137,8 +139,8 @@ $(document).ready(function() {
     $('.menu .item').tab();
     $('#date_calendar').calendar({
         type: 'date',
-        minDate: new Date(2021,8,9),
-        maxDate: new Date(2021,9,13),
+        minDate: new Date(2022,5,1),
+        maxDate: new Date(2022,5,3),
         text: {
             days: ['일', '월', '화', '수', '목', '금', '토'],
             months: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
