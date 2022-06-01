@@ -23,5 +23,12 @@
 
 body {
     vertical-align: middle;
+    overflow-x: scroll;
     /* background-color: #e0f2f1 !important; */
+}
+
+.ui.celled.table {
+    min-width: 400px;
+    height: auto;
+    overflow-x: scroll;
 }
