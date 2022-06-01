@@ -34,3 +34,8 @@ body {
 .ui.secondary.pointing.menu {
     flex-wrap: wrap;
 }
+
+.ui i {
+    font-size: 2em;
+    width: auto!important;
+}

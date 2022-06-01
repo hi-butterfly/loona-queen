@@ -110,7 +110,7 @@ function aaaa() {
         contentType: "application/json",
         success: function (data) {
             console.log("success");
-            $('#ajaxRes').html(` <div class="ui icon message"> <i class="sync alternate icon"></i> <div class="content"> <div class="header"> <h2 style="color:palevioletred" id="message">이달의 소녀 투표 꼭 부탁드려요!</h2> </div> <p style="font-weight: 100;">잊지 말고 아래 영수증 사진도 다운로드 해보세요! 감사합니다 :)</p> </div> </div><img class="ui centered large bordered image" src="data:image/png;base64,${data.img}">`)
+            $('#ajaxRes').html(` <div class="ui icon message"> <i class="sync alternate icon"></i> <div class="content"> <div class="header"> <h2 style="color:palevioletred" id="message">이달의소녀 투표 꼭 부탁드려요!</h2> </div> <p style="font-weight: 100;">아래 영수증도 다운로드 해보세요!</p> </div> </div><img class="ui centered large bordered image" src="data:image/png;base64,${data.img}">`)
         }
     });
 }
@@ -137,38 +137,35 @@ $(document).ready(function () {
 
 
 
-$.getJSON('csv1.json', function (items) {
+$.getJSON('csv3.json', function (items) {
     $.each(items, function (i, item) {
         switch (item.cat) {
             case "가전/전자":
-                $("#coin2>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
+                $("#coin2>tbody").append(`<tr><td><h4 class="ui image header">${item.icon} <div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "게임":
-                $("#coin3>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
+                $("#coin3>tbody").append(`<tr><td><h4 class="ui image header">${item.icon} <div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "기프티콘":
-                $("#coin4>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
+            case "식품":
+                $("#coin4>tbody").append(`<tr><td><h4 class="ui image header">${item.icon} <div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "아이돌/굿즈":
             case "CD/DVD":
-                $("#coin5>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
+                $("#coin5>tbody").append(`<tr><td><h4 class="ui image header">${item.icon} <div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "현금/상품권":
-                $("#coin6>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
+                $("#coin6>tbody").append(`<tr><td><h4 class="ui image header">${item.icon} <div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "화장품":
-                $("#coin7>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
+                $("#coin7>tbody").append(`<tr><td><h4 class="ui image header">${item.icon} <div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             case "패션잡화":
             case "의류":
-                $("#coin8>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
-                break;
-            case "식품":
-                $("#coin9>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
+                $("#coin8>tbody").append(`<tr><td><h4 class="ui image header">${item.icon} <div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
                 break;
             default:
-                $("#coin10>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
-                console.log('기타');
+                $("#coin10>tbody").append(`<tr><td><h4 class="ui image header">${item.icon} <div class="content"> ${item.name}<div class="sub header"><a href="${item.link}" target="_blank" style="color:#888">@${item.user}</a></div></h4></td><td><div class="ui action input"> <input type="hidden" placeholder="${item.cnt}"  min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(1)').find('input').val(${item.cnt})"> 담기</button></div></td></tr>`);
         }
     });
 });
