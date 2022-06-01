@@ -112,9 +112,6 @@ function aaaa() {
         alert("구매할 물품이 적은 경우, 영수증이 정상적으로 표시되지 않는 경우가 있습니다.\n영수증 위 메시지를 확인해주세요!")
     }
     var data = {
-        "date_start": getDate(),
-        "punch": $('#punch').val(),
-        "want": sum_coin,
         "item": JSON.stringify(jsonObj)
     };
     $.post({
@@ -124,7 +121,7 @@ function aaaa() {
         contentType: "application/json",
         success: function (data) {
             console.log("success");
-            $('#ajaxRes').html(` <div class="ui icon message"> <i class="sync alternate icon"></i> <div class="content"> <div class="header"> <h2 style="color:palevioletred" id="message">${data.message}</h2> </div> <p style="font-weight: 100;">썬데이 코인 2배, 유니온 가드닝 매일 수령한다고 가정.</p> </div> </div><img class="ui centered large bordered image" src="data:image/png;base64,${data.img}">`)
+            $('#ajaxRes').html(` <div class="ui icon message"> <i class="sync alternate icon"></i> <div class="content"> <div class="header"> <h2 style="color:palevioletred" id="message">이달의 소녀 투표 꼭 부탁드려요!</h2> </div> <p style="font-weight: 100;">잊지 말고 아래 영수증 사진도 다운로드 해보세요! 감사합니다 :)</p> </div> </div><img class="ui centered large bordered image" src="data:image/png;base64,${data.img}">`)
         }
     });
 }
