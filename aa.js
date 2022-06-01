@@ -89,11 +89,6 @@ function prev_check() {
         $('.final.active').removeClass('active');
         return false;
     }
-    if ($('#date_calendar').calendar('get date') == null) {
-        alert("코인 캐기 시작할 날짜를 선택해주세요!");
-        $('#date_calendar').calendar('focus');
-        return false;
-    }
 
     var jsonObj = tableToJson(document.getElementById("tableRes1"));
     if (jsonObj.length == 1) {
@@ -137,20 +132,6 @@ function aaaa() {
 $(document).ready(function () {
     /* init */
     $('.menu .item').tab();
-    $('#date_calendar').calendar({
-        type: 'date',
-        minDate: new Date(2022, 5, 1),
-        maxDate: new Date(2022, 5, 3),
-        text: {
-            days: ['일', '월', '화', '수', '목', '금', '토'],
-            months: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-            monthsShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-            today: '오늘\'오늘',
-            now: '현재',
-            am: '오전',
-            pm: '오후'
-        },
-    });
     $(".final").click(function () {
         getResult()
     });
@@ -177,19 +158,6 @@ $(document).ready(function () {
 
 $.getJSON('csv1.json', function (items) {
     $.each(items, function (i, item) {
-        /* if (i < 17) {
-            $("#coin1>tbody").append(`<tr><td><div><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">${isChange(item.num)}</div></h4></div></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:100px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
-        } else if (i < 29) {
-            $("#coin2>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:100px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
-        } else if (i < 99) {
-            $("#coin3>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:100px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
-        } else if (i < 125) {
-            $("#coin5>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:100px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
-        } else if (i < 150) {
-            $("#coin6>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:100px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
-        } else {
-            $("#coin7>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:100px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);
-        } */
         switch (item.cat) {
             case "가전/전자":
                 $("#coin2>tbody").append(`<tr><td><h4 class="ui image header"> <img src="img/0${item.img}.info.iconRaw.png" class="ui mini rounded image"><div class="content"> ${item.name}<div class="sub header">교환 불가</div></h4></td><td>${item.cnt}</td><td><div class="ui action input"> <input type="number" placeholder="0" style="width:100px" min="0"> <button class="ui green button cntMax" onclick="$(this).closest('tr').find('td:eq(2)').find('input').val(${item.cnt})"> 최대</button></div></td></tr>`);

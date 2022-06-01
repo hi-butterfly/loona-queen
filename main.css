@@ -4,24 +4,24 @@
     font-weight: normal;
     font-style: normal;
 }
-* { 
-    font-family: "MaplestoryOTFBold"; 
+
+* {
+    font-family: "MaplestoryOTFBold";
 }
 
 .header {
-    font-family: "MaplestoryOTFBold" !important; 
+    font-family: "MaplestoryOTFBold" !important;
 }
 
 .header h2 {
-    font-family: "MaplestoryOTFBold" !important; 
+    font-family: "MaplestoryOTFBold" !important;
 }
 
 .main.container {
     margin-top: 5em;
 }
 
-body{
+body {
     vertical-align: middle;
     /* background-color: #e0f2f1 !important; */
 }
-
